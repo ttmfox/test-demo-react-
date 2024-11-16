@@ -4,6 +4,13 @@ import UseInfor from "./UseInfor";
 import DisplayInfor from "./DisplayInfor";
 
 class Mycomponent extends React.Component {
+    state = {
+        listUser: [
+            { id: 1, name: "thien", age: "30" },
+            { id: 2, name: "thien2", age: "10" },
+            { id: 3, name: "thien3", age: "20" }
+        ]
+    }
 
     render() {
         const myAge = 50;
@@ -14,10 +21,10 @@ class Mycomponent extends React.Component {
 
                 <UseInfor />
                 <br></br>
-                <DisplayInfor name="Thien" age="18" />
-                <hr></hr>
                 {/* <DisplayInfor name="IT" age={myAge} /> */}
-                <DisplayInfor name="IT" age={60} myinfor={myinfor} />
+                <DisplayInfor
+                    listUser={this.state.listUser}
+                />
 
             </div>
         );
