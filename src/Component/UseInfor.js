@@ -27,14 +27,14 @@ class UseInfor extends React.Component {
             <div>
                 My name is {this.state.Name} and Im {this.state.age}
                 <form onSubmit={(event) => this.HandleOnSubmit(event)}>
-                    <lable>Your Name</lable>
+                    <label>Your Name</label>
                     <input
                         value={this.state.Name}
                         type="text"
                         onChange={(event) => { this.HandleOnChangeInput(event) }}
                     />
 
-                    <lable>Your Age</lable>
+                    <label>Your Age</label>
                     <input
                         value={this.state.age}
                         type="text"
