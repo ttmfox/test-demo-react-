@@ -1,6 +1,6 @@
 import { eventWrapper } from "@testing-library/user-event/dist/utils";
 import React from "react";
-import UseInfor from "./UseInfor";
+import AddUseInfor from "./AddUseInfor";
 import DisplayInfor from "./DisplayInfor";
 
 class Mycomponent extends React.Component {
@@ -12,6 +12,14 @@ class Mycomponent extends React.Component {
         ]
     }
 
+    handleAddnewUser = (userOject) => {
+        console.log(userOject)
+        this.setState({
+            // listUser: [userOject, ...this.state.listUser] them vao dau mang
+            listUser: [...this.state.listUser, userOject]
+        })
+    }
+
     render() {
         const myAge = 50;
         const myinfor = ["a", "b", "c"]
@@ -19,11 +27,14 @@ class Mycomponent extends React.Component {
         return (
             <div>
 
-                <UseInfor />
+                <AddUseInfor
+                    handleAddnewUser={this.handleAddnewUser}
+                />
                 <br></br>
                 {/* <DisplayInfor name="IT" age={myAge} /> */}
                 <DisplayInfor
                     listUser={this.state.listUser}
+
                 />
 
             </div>
