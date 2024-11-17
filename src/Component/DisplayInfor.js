@@ -2,31 +2,49 @@
 import React from "react";
 
 class DisplayInfor extends React.Component {
+
+    state = {
+        isShowLishUser: true
+    }
+
+    HandleshowHide = () => {
+        this.setState({
+            isShowLishUser: !this.state.isShowLishUser
+        })
+    }
     render() {
         //destructuring array/opject
         const { listUser } = this.props
         //props = properties 
-        console.log(listUser)
+        // console.log(listUser)
         return (
             <div>
-                {listUser.map((user, index) => {
-                    return (
-                        <div key={user.id}>
-                            <div>my name is {user.name}</div>
-                            <div>Im {user.age}</div>
+                <div>
+                    <span onClick={() => { this.HandleshowHide() }}>
 
-                        </div>
+                        {this.state.isShowLishUser === true ? "Show list user:" : "Hide list user "}
+                    </span>
+                </div>
+                {this.state.isShowLishUser &&
+                    <div>
+                        {listUser.map((user, index) => {
+                            console.log("check map users", user)
 
-                    )
-                })}
-                {/* <div>My name is {name} </div>
-                <div>Im {age} year old</div>
-                <hr></hr>
-                <div>My name is {name} </div>
-                <div>Im {age} year old</div>
-                <hr></hr>
-                <div>My name is {name} </div>
-                <div>Im {age} year old</div> */}
+
+                            return (
+                                <div key={user.id} className={+user.age > 10 ? "green" : "red"}>
+                                    <div>my name is {user.name}</div>
+                                    <div>Im {user.age}</div>
+
+                                </div>
+
+                            )
+
+
+                        })}
+
+                    </div>
+                }
             </div>
         )
     }
